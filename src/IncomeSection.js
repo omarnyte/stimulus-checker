@@ -1,7 +1,7 @@
 import './IncomeSection.css';
 import React, { useState } from 'react';
 
-function IncomeSection() {
+function IncomeSection({ onContinue }) {
   const [income, setIncome] = useState("$");
 
   const handleInputChange = (e) => {
@@ -31,7 +31,12 @@ function IncomeSection() {
       </div>
 
       <footer className="income-footer">
-        <button className={`continue-button ${income.length === 1 ? "disabled" : "enabled"}`}>Continue</button>
+        <button
+          className={`continue-button ${income.length === 1 ? "disabled" : "enabled"}`}
+          onClick={onContinue}
+        >
+          Continue
+        </button>
       </footer>
     </div>
   );

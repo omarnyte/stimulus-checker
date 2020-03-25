@@ -19,7 +19,6 @@
 .continue-button.enabled {
   background-color: #85BB65;
   color: #FAFAFA;
-  pointer-events: none;
 }
 
 .continue-button.disabled {
