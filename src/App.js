@@ -1,10 +1,11 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import IncomeSection from './IncomeSection';
+import React from 'react';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
+      <IncomeSection />
     </div>
   );
 }
