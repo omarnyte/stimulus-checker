@@ -1,7 +1,7 @@
 import './MarriageStatus.css';
 import React, { useState } from 'react';
 
-function MarriageStatus({ onBack }) {
+function MarriageStatus({ onBack, onContinue }) {
   const [marriageStatus, setMarriageStatus] = useState(null);
 
   const handleClick = (e) => {
@@ -50,6 +50,7 @@ function MarriageStatus({ onBack }) {
         <button className="back-button" onClick={onBack}>Back</button>
         <button
           className={`continue-button ${marriageStatus ? "enabled" : "disabled"}`}
+          onClick={onContinue}
         >
           Continue
         </button>

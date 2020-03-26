@@ -1,55 +1,37 @@
-.children-footer {
+/* .children-footer {
   grid-area: footer;
 
   display: flex;
   justify-content: space-around;
 }
 
-.tax-year-section-container {
-  height: 100vh;
-  
+.children-section-container {
   display: grid;
   grid-gap: 20px;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 2fr 2fr 1fr 1fr;
+  grid-template-rows: repeat(4, 24vh);
   grid-template-areas: 
-    "question     question    "
+    "question1     question1  "
     "radio-cards   radio-cards"
-    ".             .          "
+    "question2     question2  "
     "footer        footer     ";
 }
 
-.question-container {
-  grid-area: question;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.question {
-  color: #575757;
-  font-size: 28px;
-  font-weight: bold;
-
-  text-align: center;
-}
-
-.tax-year-radio-options {
+.has-children-radio-options {
   grid-area: radio-cards;
 
   display: flex;
   justify-content: space-around;
 }
 
-.tax-year-radio-options input {
+.has-children-radio-options input {
   height: 0;
   opacity: 0;
   position: absolute;
   width: 0;
 }
 
-.tax-year-radio-card {
+.has-children-radio-card {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,11 +45,27 @@
   width: 150px;
 }
 
-.tax-year-input:focus + .tax-year-radio-card {
+.has-children-input:focus + .has-children-radio-card {
   transform: translateY(-5px);
 }
 
-.tax-year-input:checked + .tax-year-radio-card {
+.has-children-input:checked + .has-children-radio-card {
   border: 1px solid #3DE6FC;
   font-weight: bold;
 }
+
+.question-1-container {
+  grid-area: question1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.children-question {
+  color: #575757;
+  font-size: 28px;
+  font-weight: bold;
+
+  text-align: center;
+} */
