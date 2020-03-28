@@ -1,7 +1,7 @@
-// import './ChildrenSection.css';
-import React, { useState } from 'react';
+import './TaxYearSection.css';
+import React from 'react';
 
-function TaxYearSection({ setYearMostRecentlyFiled, yearMostRecentlyFiled }) {
+function TaxYearSection({ onContinue, setYearMostRecentlyFiled, yearMostRecentlyFiled }) {
   return (
     <div className="tax-year-section-container">
       <div className="question-container">
@@ -40,9 +40,14 @@ function TaxYearSection({ setYearMostRecentlyFiled, yearMostRecentlyFiled }) {
         </label>
       </div>
 
-
-      <footer className="children-footer">
-        <button className="back-button">Continue</button>
+      <footer className="tax-year-footer">
+        <button 
+          className="continue-button"
+          disabled={!yearMostRecentlyFiled}
+          onClick={onContinue}
+        >
+          Continue
+        </button>
       </footer>
 
     </div>

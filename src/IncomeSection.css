@@ -6,6 +6,10 @@
   margin: 5px;
 }
 
+.back-button {
+  background-color: transparent;
+}
+
 .continue-button {
   border: none;
   border-radius: 5px;
@@ -30,7 +34,7 @@
   grid-row: 6/7;
 
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .income-input-container {

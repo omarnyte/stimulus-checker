@@ -11,16 +11,20 @@ function App() {
   
   const SECTIONS = ["taxYear", "income", "marriageStatus", "children"];
   const { currentSectionId, goToNextSection, goToPreviousSection } = useWizard(SECTIONS)
+
   
   return (
     <div className="app">
       { currentSectionId === "taxYear" && 
         <TaxYearSection
+          onContinue={goToNextSection}
           setYearMostRecentlyFiled={setYearMostRecentlyFiled}
           yearMostRecentlyFiled={yearMostRecentlyFiled}
         />
       }
-      { currentSectionId === "income" && <IncomeSection onContinue={goToNextSection} />}
+      { currentSectionId === "income" && 
+        <IncomeSection onBack={goToPreviousSection} onContinue={goToNextSection} />
+      }
       { currentSectionId === "marriageStatus" && <MarriageStatus onBack={goToPreviousSection} onContinue={goToNextSection} />}
       { currentSectionId === "children" && <ChildrenSection onBack={goToPreviousSection} />}
     </div>
