@@ -7,6 +7,7 @@ import TaxYearSection from './TaxYearSection';
 import useWizard from "./useWizard";
 
 function App() {
+  const [income, setIncome] = useState(undefined);
   const [yearMostRecentlyFiled, setYearMostRecentlyFiled] = useState(null);
   
   const SECTIONS = ["taxYear", "income", "marriageStatus", "children"];
@@ -23,7 +24,13 @@ function App() {
         />
       }
       { currentSectionId === "income" && 
-        <IncomeSection onBack={goToPreviousSection} onContinue={goToNextSection} />
+        <IncomeSection
+          income={income}
+          onBack={goToPreviousSection}
+          onContinue={goToNextSection}
+          setIncome={setIncome}
+          yearMostRecentlyFiled={yearMostRecentlyFiled}
+        />
       }
       { currentSectionId === "marriageStatus" && <MarriageStatus onBack={goToPreviousSection} onContinue={goToNextSection} />}
       { currentSectionId === "children" && <ChildrenSection onBack={goToPreviousSection} />}

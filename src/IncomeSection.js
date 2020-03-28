@@ -1,23 +1,22 @@
 import './IncomeSection.css';
-import React, { useState } from 'react';
+import React from 'react';
 
-function IncomeSection({ onBack, onContinue }) {
-  const [income, setIncome] = useState("$");
+function IncomeSection({ income, onBack, onContinue, setIncome, yearMostRecentlyFiled }) {
 
   const handleInputChange = (e) => {
-    const NUMBERS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-
-    const lastCharacterAdded = e.target.value[e.target.value.length - 1];
-    if (e.target.value.length === 1 || NUMBERS.includes(lastCharacterAdded)) {
-      setIncome(e.target.value);
+    const lastCharacterTyped = e.target.value.slice(1);
+  
+    const lastCharacterAsNumber = parseInt(lastCharacterTyped);
+    if (lastCharacterTyped === "" || lastCharacterAsNumber || lastCharacterAsNumber === 0) {
+      const updatedIncome = (lastCharacterAsNumber || lastCharacterAsNumber === 0) ? parseInt(e.target.value.slice(1)) : null;
+      setIncome(updatedIncome);
     }
-
-  }
+  };
 
   return (
     <div className="income-section-container">
       <div className="income-label-container">
-        <label className="income-label" id="income">What is Your Annual Income?</label>
+        <label className="income-label" id="income">What was your adjusted gross income in {yearMostRecentlyFiled}?</label>
       </div>
 
       <div className="income-input-container">
@@ -26,7 +25,7 @@ function IncomeSection({ onBack, onContinue }) {
           id="income"
           onChange={handleInputChange}
           type="tel"
-          value={income}
+          value={(income || income === 0) ? `$${income}` : "$"}
         />
       </div>
 
@@ -35,7 +34,8 @@ function IncomeSection({ onBack, onContinue }) {
           Back
         </button>
         <button
-          className={`continue-button ${income.length === 1 ? "disabled" : "enabled"}`}
+          className="continue-button" 
+          disabled={income === null}
           onClick={onContinue}
         >
           Continue
