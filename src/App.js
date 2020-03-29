@@ -1,18 +1,18 @@
 import './App.css';
 import ChildrenSection from './ChildrenSection';
 import IncomeSection from './IncomeSection';
-import MarriageStatus from './MarriageStatus';
+import FilingStatusSection from './FilingStatusSection';
 import React, { useState } from 'react';
 import TaxYearSection from './TaxYearSection';
 import useWizard from "./useWizard";
 
 function App() {
-  const [income, setIncome] = useState(undefined);
+  const [filingStatus, setFilingStatus] = useState(null);
+  const [income, setIncome] = useState(null);
   const [yearMostRecentlyFiled, setYearMostRecentlyFiled] = useState(null);
   
-  const SECTIONS = ["taxYear", "income", "marriageStatus", "children"];
+  const SECTIONS = ["taxYear", "income", "filingStatus", "children"];
   const { currentSectionId, goToNextSection, goToPreviousSection } = useWizard(SECTIONS)
-
   
   return (
     <div className="app">
@@ -32,7 +32,15 @@ function App() {
           yearMostRecentlyFiled={yearMostRecentlyFiled}
         />
       }
-      { currentSectionId === "marriageStatus" && <MarriageStatus onBack={goToPreviousSection} onContinue={goToNextSection} />}
+      { currentSectionId === "filingStatus" &&
+        <FilingStatusSection
+          filingStatus={filingStatus}
+          onBack={goToPreviousSection}
+          onContinue={goToNextSection}
+          setFilingStatus={setFilingStatus}
+          yearMostRecentlyFiled={yearMostRecentlyFiled}
+        />
+      }
       { currentSectionId === "children" && <ChildrenSection onBack={goToPreviousSection} />}
     </div>
   );
