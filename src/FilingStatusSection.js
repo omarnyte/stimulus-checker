@@ -13,15 +13,15 @@ function MarriageStatus({ filingStatus, onBack, onContinue, setFilingStatus, yea
       </div>
 
       <div className="marriage-options">
-        <label className="marriage-options-label" htmlFor="headOfHoushold">
+        <label className="marriage-options-label" htmlFor="headOfHousehold">
           <input
-            checked={filingStatus === "headOfHoushold"}
+            checked={filingStatus === "headOfHousehold"}
             className="marriage-radio-input"
-            id="headOfHoushold"
+            id="headOfHousehold"
             name="marriageStatus"
             onChange={handleClick}
             type="radio"
-            value="headOfHoushold"
+            value="headOfHousehold"
           />
           <div className="marriage-options-radio-card">
             <span>Head of Household</span>

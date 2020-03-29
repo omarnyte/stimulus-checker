@@ -2,6 +2,7 @@ import './App.css';
 import ChildrenSection from './ChildrenSection';
 import IncomeSection from './IncomeSection';
 import FilingStatusSection from './FilingStatusSection';
+import PaymentAmountSection from './PaymentAmountSection';
 import React, { useState } from 'react';
 import TaxYearSection from './TaxYearSection';
 import useWizard from "./useWizard";
@@ -12,7 +13,7 @@ function App() {
   const [numberOfChildren, setNumberOfChildren] = useState(null);
   const [yearMostRecentlyFiled, setYearMostRecentlyFiled] = useState(null);
   
-  const SECTIONS = ["taxYear", "income", "filingStatus", "children"];
+  const SECTIONS = ["taxYear", "income", "filingStatus", "children", "paymentAmount"];
   const { currentSectionId, goToNextSection, goToPreviousSection } = useWizard(SECTIONS)
   
   return (
@@ -46,8 +47,16 @@ function App() {
         <ChildrenSection
           numberOfChildren={numberOfChildren}
           onBack={goToPreviousSection}
+          onContinue={goToNextSection}
           setNumberOfChildren={setNumberOfChildren}
           yearMostRecentlyFiled={yearMostRecentlyFiled}
+        />
+      }
+      { currentSectionId === "paymentAmount" &&
+        <PaymentAmountSection
+          filingStatus={filingStatus}
+          income={income}
+          numberOfChildren={numberOfChildren}
         />
       }
     </div>

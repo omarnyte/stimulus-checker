@@ -1,0 +1,28 @@
+.payment-amount-container {
+  grid-area: amount;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.payment-amount-container span {
+  color: #575757;
+  font-size: 28px;
+  font-weight: bold;
+
+  text-align: center;
+}
+
+.payment-amount-section-container {
+  height: 100vh;
+  
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2fr 1fr 1fr 1fr;
+  grid-template-areas: 
+    "amount  amount  "
+    ".         .     "
+    "footer    footer";
+}

@@ -1,7 +1,7 @@
 import './ChildrenSection.css';
 import React from 'react';
 
-function ChildrenSection({ numberOfChildren, onBack, setNumberOfChildren, yearMostRecentlyFiled }) {
+function ChildrenSection({ numberOfChildren, onBack, onContinue, setNumberOfChildren, yearMostRecentlyFiled }) {
 
   const handleNumberOfChildrenChange = (e) => {
     const typedValueAsNumber = parseInt(e.target.value);
@@ -23,6 +23,8 @@ function ChildrenSection({ numberOfChildren, onBack, setNumberOfChildren, yearMo
         <input
           className="children-input"
           id="numberOfChildren"
+          max="20"
+          min="0"
           name="numberOfChildren"
           onChange={handleNumberOfChildrenChange}
           value={(numberOfChildren || numberOfChildren === 0) ? numberOfChildren : ""}
@@ -31,7 +33,13 @@ function ChildrenSection({ numberOfChildren, onBack, setNumberOfChildren, yearMo
 
       <footer className="children-footer">
         <button className="back-button" onClick={onBack}>Back</button>
-        <button className="continue-button">Continue</button>
+        <button
+          className="continue-button"
+          disabled={numberOfChildren === null}
+          onClick={onContinue}
+        >
+          Continue
+        </button>
       </footer>
 
     </div>

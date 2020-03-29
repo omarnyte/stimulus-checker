@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function useWizard(sectionIds) {
+function useWizard(sectionIds, activeIndex) {
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
 
   const goToNextSection = () => setCurrentSectionIndex(currentSectionIndex + 1);
