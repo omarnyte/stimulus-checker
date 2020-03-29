@@ -1,55 +1,37 @@
 import './ChildrenSection.css';
-import React, { useState } from 'react';
+import React from 'react';
 
-function ChildrenSection({ onBack }) {
-  const [hasChildren, setHasChildren] = useState(true);
+function ChildrenSection({ numberOfChildren, onBack, setNumberOfChildren, yearMostRecentlyFiled }) {
 
-  const handleHasChildrenChange = (e) => {
-    setHasChildren(e.target.value === "yes");
-  }
+  const handleNumberOfChildrenChange = (e) => {
+    const typedValueAsNumber = parseInt(e.target.value);
+
+    if (typedValueAsNumber || typedValueAsNumber === 0) {
+      setNumberOfChildren(typedValueAsNumber);
+    } else if (e.target.value === "") {
+      setNumberOfChildren(null);
+    }
+  };
 
   return (
     <div className="children-section-container">
-      <div className="question-1-container">
-        <label className="children-question" id="numberOfChildren">Do You Have any Children?</label>
+      <div className="children-question-container">
+        <label className="children-question" htmlFor="numberOfChildren">How many children did you claim on your {yearMostRecentlyFiled} taxes?</label>
       </div>
 
-      <div className="has-children-radio-options">
-        <label className="has-children-options-label" htmlFor="yes">
-          <input
-            checked={hasChildren === true}
-            className="has-children-input"
-            id="yes"
-            name="hasChildren"
-            onChange={handleHasChildrenChange}
-            type="radio"
-            value="yes"
-          />
-          <div className="has-children-radio-card">
-            <span>Yes</span>
-          </div>
-        </label>
-
-        <label className="has-children-options-label" htmlFor="yes">
-          <input
-            checked={hasChildren === false}
-            className="has-children-input"
-            id="no"
-            name="hasChildren"
-            onChange={handleHasChildrenChange}
-            type="radio"
-            value="no"
-          />
-          <div className="has-children-radio-card">
-            <span>No</span>
-          </div>
-        </label>
+      <div className="children-input-container">
+        <input
+          className="children-input"
+          id="numberOfChildren"
+          name="numberOfChildren"
+          onChange={handleNumberOfChildrenChange}
+          value={(numberOfChildren || numberOfChildren === 0) ? numberOfChildren : ""}
+        />
       </div>
-
 
       <footer className="children-footer">
         <button className="back-button" onClick={onBack}>Back</button>
-        <button className="back-button">Continue</button>
+        <button className="continue-button">Continue</button>
       </footer>
 
     </div>

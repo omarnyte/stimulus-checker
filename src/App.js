@@ -9,6 +9,7 @@ import useWizard from "./useWizard";
 function App() {
   const [filingStatus, setFilingStatus] = useState(null);
   const [income, setIncome] = useState(null);
+  const [numberOfChildren, setNumberOfChildren] = useState(null);
   const [yearMostRecentlyFiled, setYearMostRecentlyFiled] = useState(null);
   
   const SECTIONS = ["taxYear", "income", "filingStatus", "children"];
@@ -41,7 +42,14 @@ function App() {
           yearMostRecentlyFiled={yearMostRecentlyFiled}
         />
       }
-      { currentSectionId === "children" && <ChildrenSection onBack={goToPreviousSection} />}
+      { currentSectionId === "children" &&
+        <ChildrenSection
+          numberOfChildren={numberOfChildren}
+          onBack={goToPreviousSection}
+          setNumberOfChildren={setNumberOfChildren}
+          yearMostRecentlyFiled={yearMostRecentlyFiled}
+        />
+      }
     </div>
   );
 }

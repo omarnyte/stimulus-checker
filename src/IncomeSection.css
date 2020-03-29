@@ -116,12 +116,6 @@
     align-items: center;
   }
 
-  .income-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   .income-footer button {
     margin: 20px;
   }
