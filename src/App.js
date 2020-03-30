@@ -7,34 +7,31 @@ import React, { useState } from 'react';
 import TaxYearSection from './TaxYearSection';
 import useWizard from "./useWizard";
 
+const CHILDREN = "children";
+const FILING_STATUS = "filingStatus";
+const INCOME = "income";
+const PAYMENT_AMOUNT = "paymentAmount";
+const TAX_YEAR = "taxYear";
+const SECTIONS = [TAX_YEAR, FILING_STATUS, INCOME, CHILDREN, PAYMENT_AMOUNT];
+
 function App() {
   const [filingStatus, setFilingStatus] = useState(null);
   const [income, setIncome] = useState(null);
   const [numberOfChildren, setNumberOfChildren] = useState(null);
   const [yearMostRecentlyFiled, setYearMostRecentlyFiled] = useState(null);
   
-  const SECTIONS = ["taxYear", "income", "filingStatus", "children", "paymentAmount"];
   const { currentSectionId, goToNextSection, goToPreviousSection } = useWizard(SECTIONS)
   
   return (
     <div className="app">
-      { currentSectionId === "taxYear" && 
+      { currentSectionId === TAX_YEAR && 
         <TaxYearSection
           onContinue={goToNextSection}
           setYearMostRecentlyFiled={setYearMostRecentlyFiled}
           yearMostRecentlyFiled={yearMostRecentlyFiled}
         />
       }
-      { currentSectionId === "income" && 
-        <IncomeSection
-          income={income}
-          onBack={goToPreviousSection}
-          onContinue={goToNextSection}
-          setIncome={setIncome}
-          yearMostRecentlyFiled={yearMostRecentlyFiled}
-        />
-      }
-      { currentSectionId === "filingStatus" &&
+      { currentSectionId === FILING_STATUS &&
         <FilingStatusSection
           filingStatus={filingStatus}
           onBack={goToPreviousSection}
@@ -43,7 +40,16 @@ function App() {
           yearMostRecentlyFiled={yearMostRecentlyFiled}
         />
       }
-      { currentSectionId === "children" &&
+      { currentSectionId === INCOME && 
+        <IncomeSection
+          income={income}
+          onBack={goToPreviousSection}
+          onContinue={goToNextSection}
+          setIncome={setIncome}
+          yearMostRecentlyFiled={yearMostRecentlyFiled}
+        />
+      }
+      { currentSectionId === CHILDREN &&
         <ChildrenSection
           numberOfChildren={numberOfChildren}
           onBack={goToPreviousSection}
@@ -52,7 +58,7 @@ function App() {
           yearMostRecentlyFiled={yearMostRecentlyFiled}
         />
       }
-      { currentSectionId === "paymentAmount" &&
+      { currentSectionId === PAYMENT_AMOUNT &&
         <PaymentAmountSection
           filingStatus={filingStatus}
           income={income}
