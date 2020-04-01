@@ -35,11 +35,23 @@ function PaymentAmountSection({ income, filingStatus, numberOfChildren }) {
     }
   }
 
+  const formatPaymentAmount = (paymentAmount) => {
+    return `$${paymentAmount.toLocaleString()}`;
+  };
+
+  const paymentAmount = calculatePaymentAmount();
+
   return (
     <div className="payment-amount-section-container">
       <div className="payment-amount-container">
-        <span>Your estimated payment is ${calculatePaymentAmount()}.</span>
+        <span>Your estimated payment is {formatPaymentAmount(paymentAmount)}</span>
       </div>
+
+      <footer className="payment-amount-section-footer">
+        <button className="restart-button">
+          Start Over
+        </button>
+      </footer>
     </div>
   );
 }
