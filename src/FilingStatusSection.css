@@ -89,6 +89,7 @@ button {
 
 .marriage-status-section-container {
   height: 100vh;
+  height: calc(100vh - var(--vh-offset, 0px));
   
   display: grid;
   grid-gap: 20px;

@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
-      name="description"
-      content="Web site created using create-react-app"
+      name="Stimulus Checker"
+      content="Calculate the amount of your expected stimulus paycheck. "
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
@@ -28,6 +28,13 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script src="https://unpkg.com/vh-check/dist/vh-check.min.js"></script>
+    <script>
+      (function () {
+        // Checks for compatibility with vh (which is not supported by iOS Safari)
+        var test = vhCheck();
+      }());
+    </script>
     <div id="root"></div>
     <!--
       This HTML file is a template.
