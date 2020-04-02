@@ -20,7 +20,15 @@ function App() {
   const [numberOfChildren, setNumberOfChildren] = useState(null);
   const [yearMostRecentlyFiled, setYearMostRecentlyFiled] = useState(null);
   
-  const { currentSectionId, goToNextSection, goToPreviousSection } = useWizard(SECTIONS)
+  const { currentSectionId, goToNextSection, goToPreviousSection, goToSectionAtIndex } = useWizard(SECTIONS)
+
+  const resetQuestionnaire = () => {
+    setFilingStatus(null);
+    setIncome(null);
+    setNumberOfChildren(null);
+    setYearMostRecentlyFiled(null);
+    goToSectionAtIndex(0);
+  }
   
   return (
     <div className="app">
@@ -63,6 +71,7 @@ function App() {
           filingStatus={filingStatus}
           income={income}
           numberOfChildren={numberOfChildren}
+          onStartOverClick={resetQuestionnaire}
         />
       }
     </div>

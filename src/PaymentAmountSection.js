@@ -1,7 +1,7 @@
 import './PaymentAmountSection.css';
 import React from 'react';
 
-function PaymentAmountSection({ income, filingStatus, numberOfChildren }) {
+function PaymentAmountSection({ income, filingStatus, numberOfChildren, onStartOverClick }) {
   const calculatePaymentAmount = () => {
     const PAYMENT_PER_CHILD = 500;
     const paymentForChildren = numberOfChildren * PAYMENT_PER_CHILD;
@@ -48,7 +48,7 @@ function PaymentAmountSection({ income, filingStatus, numberOfChildren }) {
       </div>
 
       <footer className="payment-amount-section-footer">
-        <button className="restart-button">
+        <button className="restart-button" onClick={onStartOverClick}>
           Start Over
         </button>
       </footer>
