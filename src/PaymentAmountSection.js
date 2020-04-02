@@ -1,7 +1,7 @@
 import './PaymentAmountSection.css';
 import React from 'react';
 
-function PaymentAmountSection({ income, filingStatus, numberOfChildren }) {
+function PaymentAmountSection({ income, filingStatus, numberOfChildren, onStartOverClick }) {
   const calculatePaymentAmount = () => {
     const PAYMENT_PER_CHILD = 500;
     const paymentForChildren = numberOfChildren * PAYMENT_PER_CHILD;
@@ -35,11 +35,23 @@ function PaymentAmountSection({ income, filingStatus, numberOfChildren }) {
     }
   }
 
+  const formatPaymentAmount = (paymentAmount) => {
+    return `$${paymentAmount.toLocaleString()}`;
+  };
+
+  const paymentAmount = calculatePaymentAmount();
+
   return (
     <div className="payment-amount-section-container">
       <div className="payment-amount-container">
-        <span>Your estimated payment is ${calculatePaymentAmount()}.</span>
+        <span>Your estimated payment is {formatPaymentAmount(paymentAmount)}</span>
       </div>
+
+      <footer className="payment-amount-section-footer">
+        <button className="restart-button" onClick={onStartOverClick}>
+          Start Over
+        </button>
+      </footer>
     </div>
   );
 }
