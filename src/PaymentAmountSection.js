@@ -44,7 +44,8 @@ function PaymentAmountSection({ income, filingStatus, numberOfChildren, onStartO
   return (
     <div className="payment-amount-section-container">
       <div className="payment-amount-container">
-        <span>Your estimated payment is {formatPaymentAmount(paymentAmount)}</span>
+        <span className="payment-amount">Your estimated payment is {formatPaymentAmount(paymentAmount)}.</span>
+        <span className="payment-information">To confirm your payment information, visit the <a href="https://www.irs.gov/coronavirus/economic-impact-payments">IRS Economic Impact Payments website.</a></span>
       </div>
 
       <footer className="payment-amount-section-footer">

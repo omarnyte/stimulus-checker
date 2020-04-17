@@ -2,11 +2,16 @@
   grid-area: amount;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.payment-amount-container span {
+.payment-amount {
+  color: #575757;
+  font-size: 28px;
+  font-weight: bold;
+
   color: #575757;
   font-size: 28px;
   font-weight: bold;
@@ -20,6 +25,10 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+}
+
+.payment-information {
+  text-align: center;
 }
 
 .restart-button {
@@ -36,7 +45,28 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas: 
-    "amount  amount  "
-    ".         .     "
-    "footer    footer";
+    "amount amount"
+    ".      .     "
+    "footer footer";
+}
+
+@media only screen and (min-width: 600px) {
+  .payment-amount-section-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-areas: 
+      "amount amount"
+      ".      .     "
+      "footer footer";
+  }
+}
+
+@media only screen and (min-width: 768px) and (min-height: 500px) {
+  .payment-amount-section-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 15% 25% 15%;
+    grid-template-areas: 
+      "amount amount"
+      "footer footer";
+  }
 }
